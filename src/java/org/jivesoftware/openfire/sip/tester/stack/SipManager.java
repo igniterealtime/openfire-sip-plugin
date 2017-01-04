@@ -1,4 +1,4 @@
-/*
+/**
  * Copyright (C) 2005-2008 Jive Software. All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -447,7 +447,7 @@ public class SipManager implements SipListener {
         try {
             serverTransaction.sendResponse(notImplemented);
         }
-        catch (SipException | InvalidArgumentException ex) {
+        catch (SipException ex) {
             fireCommunicationsError(new CommunicationsException(
                     "Failed to create a NOT_IMPLEMENTED response to a "
                             + request.getMethod() + " request!", ex));
@@ -866,21 +866,6 @@ public class SipManager implements SipListener {
     } // process response
 
     public void processTimeout(TimeoutEvent timeoutEvent) {
-
-    }
-
-    @Override
-    public void processIOException(final IOExceptionEvent exceptionEvent) {
-
-    }
-
-    @Override
-    public void processTransactionTerminated(final TransactionTerminatedEvent transactionTerminatedEvent) {
-
-    }
-
-    @Override
-    public void processDialogTerminated(final DialogTerminatedEvent dialogTerminatedEvent) {
 
     }
 
