@@ -14,7 +14,7 @@
   - See the License for the specific language governing permissions and
   - limitations under the License.
 --%>
-
+<%@ page contentType="text/html; charset=UTF-8" %>
 <%@ page import="org.jivesoftware.openfire.sip.sipaccount.SipAccount,
                  org.jivesoftware.openfire.sip.sipaccount.SipAccountDAO,
                  org.jivesoftware.util.ParamUtils,
