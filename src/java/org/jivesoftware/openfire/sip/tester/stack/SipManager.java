@@ -447,7 +447,7 @@ public class SipManager implements SipListener {
         try {
             serverTransaction.sendResponse(notImplemented);
         }
-        catch (SipException ex) {
+        catch (SipException | InvalidArgumentException ex) {
             fireCommunicationsError(new CommunicationsException(
                     "Failed to create a NOT_IMPLEMENTED response to a "
                             + request.getMethod() + " request!", ex));
@@ -869,6 +869,21 @@ public class SipManager implements SipListener {
 
     }
 
+    @Override
+    public void processIOException(final IOExceptionEvent exceptionEvent) {
+
+    }
+
+    @Override
+    public void processTransactionTerminated(final TransactionTerminatedEvent transactionTerminatedEvent) {
+
+    }
+ 
+    @Override
+    public void processDialogTerminated(final DialogTerminatedEvent dialogTerminatedEvent) {
+
+    }
+ 
     String getLocalHostAddress() {
         return localAddress.getHostAddress();
     }
