@@ -1,5 +1,9 @@
 name: Java CI
-on: [push, pull_request]
+on:
+  create:
+    tags: "**"
+  push:
+  pull_request:
 
 jobs:
   build:
@@ -35,9 +39,8 @@ jobs:
         run:  mvn -B package
 
       - name: Conditionally Deploy to Igniterealtime Archiva
-        if: ${{github.repository == 'igniterealtime/openfire-sip-plugin' && github.ref == 'refs/heads/master' && github.event_name == 'push' && matrix.java == '1.8'}}
+        if: ${{ contains(github.repository, 'igniterealtime/') && ( ( github.event_name == 'push' && github.ref == 'refs/heads/master' ) || contains(github.ref, 'refs/tags/') ) && matrix.java == '1.8' }}
         run: mvn -B deploy --settings target/ci-tooling/maven-settings-for-openfire-plugins.xml
         env:
           CI_DEPLOY_USERNAME: ${{ secrets.IGNITE_REALTIME_MAVEN_USERNAME }}
           CI_DEPLOY_PASSWORD: ${{ secrets.IGNITE_REALTIME_MAVEN_PASSWORD }}
-        
