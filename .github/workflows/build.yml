@@ -26,6 +26,9 @@ jobs:
           version=$(echo ${{ github.ref }} | cut -d '/' -f3 | cut -c 2-)
           echo "::set-output name=version::$version"
           echo "version is '$version'"
+          rel_id=$(curl -sL https://api.github.com/repos/${{github.repository}}/releases/latest?access_token=${{ secrets.GITHUB_TOKEN }} | jq -r '.id')
+          echo ::set-output name=rel_id::$rel_id
+          echo "rel_id is '$rel_id'"
 
       - name: Setup JDK ${{ matrix.java }}
         uses: actions/setup-java@v1
@@ -63,7 +66,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          upload_url: https://uploads.github.com/repos/${{ github.repository }}/releases/${{ steps.get-id.outputs.tag }}/assets?name=${{ steps.get-id.outputs.id }}.jar
+          upload_url: https://uploads.github.com/repos/${{ github.repository }}/releases/${{ steps.get-id.outputs.rel_id }}/assets?name=${{ steps.get-id.outputs.id }}.jar
           asset_path: target/${{ steps.get-id.outputs.id }}-openfire-plugin-assembly.jar
           asset_name: ${{ steps.get-id.outputs.id }}.jar
           asset_content_type: application/java-archive
