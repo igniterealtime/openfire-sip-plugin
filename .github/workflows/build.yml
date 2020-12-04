@@ -64,6 +64,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: https://uploads.github.com/repos/${{ github.repository }}/releases/${{ steps.get-id.outputs.tag }}/assets?name=${{ steps.get-id.outputs.id }}.jar
-          asset_path: target/${{ steps.get-id.outputs.id }}-${{ steps.get-id.outputs.version }}.jar
+          asset_path: target/${{ steps.get-id.outputs.id }}-openfire-plugin-assembly.jar
           asset_name: ${{ steps.get-id.outputs.id }}.jar
           asset_content_type: application/java-archive
