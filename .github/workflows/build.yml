@@ -17,6 +17,7 @@ jobs:
       - id: get-id
         name: Compute needed variables
         run: |
+          set -x
           id=$(echo ${{ github.repository }} | cut -d- -f2)
           echo "::set-output name=id::$id"
           echo "id is '$id'"
