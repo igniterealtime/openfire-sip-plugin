@@ -27,8 +27,6 @@
     <meta name="pageID" content="sipark-log-summary"/>
     <script src="/js/prototype.js" type="text/javascript"></script>
     <script src="/js/scriptaculous.js" type="text/javascript"></script>
-    <script type="text/javascript" language="javascript" src="/js/tooltips/domLib.js"></script>
-    <script type="text/javascript" language="javascript" src="/js/tooltips/domTT.js"></script>
     <style type="text/css">@import url( /js/jscalendar/calendar-win2k-cold-1.css );</style>
     <script type="text/javascript" src="/js/jscalendar/calendar.js"></script>
     <script type="text/javascript" src="/js/jscalendar/i18n.jsp"></script>
@@ -57,25 +55,42 @@
             margin-left: 3px;
             margin-right: 3px;
         }
+
+        .openfire-helpicon-with-tooltip {
+            position: relative;
+            display: inline-block;
+        }
+
+        .openfire-helpicon-with-tooltip .helpicon {
+            display: block;
+            float: left;
+            width: 14px;
+            height: 14px;
+            background: transparent url('images/icon_help_14x14.gif') no-repeat;
+        }
+
+        .openfire-helpicon-with-tooltip .tooltiptext {
+            font-family: Arial, Helvetica sans-serif;
+            font-size: small;
+            visibility: hidden;
+            width: 240px;
+            background-color: #FFFBE2;
+            color: black;
+            text-align: center;
+            border: 1px solid #bbb;
+            padding: 5px;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%;
+            left: 50%;
+            margin-left: -120px;
+            white-space: normal;
+        }
+
+        .openfire-helpicon-with-tooltip:hover .tooltiptext {
+            visibility: visible;
+        }
     </style>
-
-    <script type="text/javascript">
-        function hover(oRow) {
-            oRow.style.background = "#A6CAF0";
-            oRow.style.cursor = "pointer";
-        }
-
-        function noHover(oRow) {
-            oRow.style.background = "white";
-        }
-
-        function submitFormAgain(start, range){
-            document.f.start.value = start;
-            document.f.range.value = range;
-            document.f.parseRange.value = "true";
-            document.f.submit();
-        }
-    </script>
     <style type="text/css">
         .stat {
             margin: 0px 0px 8px 0px;
@@ -100,29 +115,6 @@
             border-color: #bbb;
             border-style: solid;
             border-width: 0px 0px 1px 0px;
-        }
-
-        /* Default DOM Tooltip Style */
-        div.domTT {
-            border: 1px solid #bbb;
-            background-color: #FFFBE2;
-            font-family: Arial, Helvetica sans-serif;
-            font-size: 9px;
-            padding: 5px;
-        }
-
-        div.domTT .caption {
-            font-family: serif;
-            font-size: 12px;
-            font-weight: bold;
-            padding: 1px 2px;
-            color: #FFFFFF;
-        }
-
-        div.domTT .contents {
-            font-size: 12px;
-            font-family: sans-serif;
-            padding: 3px 2px;
         }
 
         .textfield {
@@ -271,9 +263,10 @@
                         <td colspan="3">
                             <img src="images/icon_daterange.gif" align="absmiddle" alt="" style="margin: 0px 4px 0px 2px;"/>
                             <b><fmt:message key="archive.search.daterange" /></b>
-                            <a onmouseover="domTT_activate(this, event, 'content',
-                                '<fmt:message key="archive.search.daterange.tooltip"/>',
-                                'trail', true, 'direction', 'northeast', 'width', '220');"><img src="images/icon_help_14x14.gif" vspace="2" align="texttop"/></a>
+                            <div class="openfire-helpicon-with-tooltip">
+                                <span class="helpicon"></span>
+                                <span class="tooltiptext"><fmt:message key="archive.search.daterange.tooltip"/></span>
+                            </div>
                         </td>
                     </tr>
                     <tr valign="top">
