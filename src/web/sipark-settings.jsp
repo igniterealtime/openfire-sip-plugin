@@ -70,29 +70,6 @@
         border-width: 0px 0px 1px 0px;
     }
 
-    /* Default DOM Tooltip Style */
-    div.domTT {
-        border: 1px solid #bbb;
-        background-color: #F9F5D5;
-        font-family: arial;
-        font-size: 9px;
-        padding: 5px;
-    }
-
-    div.domTT .caption {
-        font-family: serif;
-        font-size: 12px;
-        font-weight: bold;
-        padding: 1px 2px;
-        color: #FFFFFF;
-    }
-
-    div.domTT .contents {
-        font-size: 12px;
-        font-family: sans-serif;
-        padding: 3px 2px;
-    }
-
     .textfield {
         font-size: 11px;
         font-family: verdana;
