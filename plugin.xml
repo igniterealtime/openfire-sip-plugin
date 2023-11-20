@@ -6,7 +6,7 @@
     <description>Provides support for SIP account management</description>
     <author>Ignite Realtime</author>
     <version>${project.version}</version>
-    <date>12/17/2020</date>
+    <date>10/20/2023</date>
     <databaseKey>sip</databaseKey>
     <databaseVersion>2</databaseVersion>
     <minServerVersion>4.0.0</minServerVersion>
